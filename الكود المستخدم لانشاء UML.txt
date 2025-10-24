@@ -1,0 +1,75 @@
+@startuml PerfumeStoreApp_UML
+' use skinparams for nicer look
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype ortho
+' Interface
+interface IProduct {
+    +DisplayInfo()
+}
+' Abstract class
+abstract class Perfume {
+    - id : string
+    - name : string
+    - price : double
+    - quantity : int
+    + Id : string {readOnly}
+    + Name : string
+    + Price : double
+    + Quantity : int
+    + Perfume(id, name, price, quantity)
+    + DisplayInfo()
+}
+' Subclasses
+class MenPerfume {
+    +MenPerfume(id, name, price, quantity)
+    +DisplayInfo()
+}
+class WomenPerfume {
+    +WomenPerfume(id, name, price, quantity)
+    +DisplayInfo()
+}
+class OrientalPerfume {
+    +OrientalPerfume(id, name, price, quantity)
+    +DisplayInfo()
+}
+' Manager and store
+class PerfumeStore {
+    - Perfumes : List<Perfume>
+    + AddPerfume(p : Perfume)
+    + DisplayAll()
+    + Count() : int
+}
+class InventoryManager {
+    + OnLowStock : event
+    + CheckStock(p : Perfume)
+}
+' Static utility classes
+class Validator <<static>> {
+    + IsValidPrice(price : double) : bool
+    + IsValidQuantity(q : int) : bool
+}
+class StoreStatistics <<static>> {
+    + TotalPerfumes : int {static}
+}
+' Delegates (represented as notes)
+note right of InventoryManager
+  Delegate:
+  LowStockHandler(string perfumeName)
+end note
+' Relationships
+IProduct <|.. Perfume
+Perfume <|-- MenPerfume
+Perfume <|-- WomenPerfume
+Perfume <|-- OrientalPerfume
+PerfumeStore "1" *-- "0..*" Perfume : contains
+PerfumeStore ..> StoreStatistics : increments
+InventoryManager ..> Perfume : checks
+InventoryManager ..> PerfumeStore : observes
+InventoryManager ..> StoreStatistics : reads
+Validator ..> Perfume : validates inputs
+' show event relation
+InventoryManager ..> "LowStockHandler" : raises
+' layout hints
+PerfumeStore -down- InventoryManager
+@enduml

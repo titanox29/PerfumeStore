@@ -1,0 +1,7 @@
+C:\Users\Laptop Syria\Desktop\PerfumeStoreApp\bin\Debug\PerfumeStoreApp.exe.config
+C:\Users\Laptop Syria\Desktop\PerfumeStoreApp\bin\Debug\PerfumeStoreApp.exe
+C:\Users\Laptop Syria\Desktop\PerfumeStoreApp\bin\Debug\PerfumeStoreApp.pdb
+C:\Users\Laptop Syria\Desktop\PerfumeStoreApp\obj\Debug\PerfumeStoreApp.csproj.AssemblyReference.cache
+C:\Users\Laptop Syria\Desktop\PerfumeStoreApp\obj\Debug\PerfumeStoreApp.csproj.CoreCompileInputs.cache
+C:\Users\Laptop Syria\Desktop\PerfumeStoreApp\obj\Debug\PerfumeStoreApp.exe
+C:\Users\Laptop Syria\Desktop\PerfumeStoreApp\obj\Debug\PerfumeStoreApp.pdb
